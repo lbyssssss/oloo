@@ -4,7 +4,7 @@ requests.packages.urllib3.disable_warnings()
 
 def main():
     banner()
-    parser = argparse.ArgumentParser(description="通达OA report_bi.func.php 存在sql注入")
+    parser = argparse.ArgumentParser(description="用友U8cloud 存在sql注入")
     parser.add_argument('-u','--url',help="please input your url")
     parser.add_argument('-f','--file',help="please input your file")
     args = parser.parse_args()
